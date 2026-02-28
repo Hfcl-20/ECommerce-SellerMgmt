@@ -25,7 +25,9 @@
                 Console.WriteLine("2. View Shop Products");
                 Console.WriteLine("3. Add Product to Cart");
                 Console.WriteLine("4. View Shopping Cart");
-                Console.WriteLine("5. Exit");
+                Console.WriteLine("5. Search Products");
+                Console.WriteLine("6. Clear Shopping Cart");
+                Console.WriteLine("7. Exit");
                 Console.Write("Select: ");
                 string choice = Console.ReadLine();
 
@@ -33,7 +35,9 @@
                 else if (choice == "2") ViewProducts();
                 else if (choice == "3") AddToCart();
                 else if (choice == "4") ViewCart();
-                else if (choice == "5") break;
+                else if (choice == "5") SearchProduct;
+                else if (choice == "6") ClearCart;
+                else if (choice == "7") break;
             }
         }
 
@@ -45,6 +49,7 @@
             productPrices[productCount] = double.Parse(Console.ReadLine());
             Console.Write("Enter Quantity: ");
             productStocks[productCount] = int.Parse(Console.ReadLine());
+            
 
             productCount++;
             Console.WriteLine("Inventory Updated!");
@@ -92,6 +97,29 @@
             {
                 Console.WriteLine(shoppingCart[i]);
             }
+
+            static void SearchProducts()
+        {
+            Console.Write("Enter Product Name to search: ");
+            productNames[productCount] = Console.ReadLine().ToLower;
+            bool found = false;
+                
+            Console.Write("\n--- SEARCH RESULTS --- ");
+            for (int i = 0; i < productCount; i++)
+            {
+                if (productNames[i].ToLower() = Contains(query))
+                {
+                    Console.WriteLine($"{i}\t{productNames[i]}\t\t${productNames[i]}");
+                    found = true;
+                }
+            }
+                if (!found) Console.WriteLine("No Products found matching that name.");
+            }
+
+             static void ClearCart()
+             {
+                 shoppingCart.Clear();
+                 Console.WriteLine("Your Cart has been emptied.");
         }
     }
 }
